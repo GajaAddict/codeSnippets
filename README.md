@@ -1,2 +1,0 @@
-# codeSnippets
-code Snippets
