@@ -63,7 +63,7 @@ setSearchText = (e) => {
 }
 
 //-------------------------------------------------------------------------------------
-//group by
+//groupby
 export const groupBy = (array, f, name) => {
     let groups = {};
     array.forEach(function (o) {
@@ -86,6 +86,17 @@ export const groupBy = (array, f, name) => {
         }
     })
 }
+
+//-------------------------------------------------------------------------------------
+//groupby
+let inventory = [
+    { Phase: "Phase 1", Step: "Step 1", Value: 15 },
+    { Phase: "Phase 1", Step: "Step 2", Value: 35 },
+    { Phase: "Phase 2", Step: "Step 1", Value: 55 },
+    { Phase: "Phase 2", Step: "Step 2", Value: 75 }
+]
+
+const result = Object.groupBy(inventory, eachinventory => eachinventory.Phase);
 
 //-------------------------------------------------------------------------------------
 //Add new key to object

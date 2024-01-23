@@ -161,3 +161,44 @@ export default function NotFound() {
         </>
     )
 }
+
+
+//---------------------------------------------------------------------------
+//Protected Route
+
+//PrivateRoutes.js
+import { Outlet, Navigate } from 'react-router-dom'
+
+const PrivateRoutes = () => {
+    let auth = { 'token': false }
+    return (
+        auth.token ? <Outlet /> : <Navigate to="/login" />
+    )
+}
+export default PrivateRoutes;
+
+//App.js
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Products from './pages/Products'
+import Login from './pages/Login'
+import PrivateRoutes from './utils/PrivateRoutes'
+
+function App() {
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<PrivateRoutes />}>
+                        <Route element={<Home />} path="/" exact />
+                        <Route element={<Products />} path="/products" />
+                    </Route>
+                    <Route element={<Login />} path="/login" />
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
+}
+
+export default App;
